@@ -7,7 +7,6 @@
       Create
     </a>
   </h1>
-
   {# --- INÍCIO DA BUSCA --- #}
   <form method="get" action="">
       <div class="input-group mb-3">
@@ -23,9 +22,9 @@
   {% endif %}
   {# --- FIM DA BUSCA --- #}
 
-  {% if car_list %}
+  {% if cars %} {# Verificação de contexto para 'cars' #}
     <ul>
-      {% for car in car_list %}
+      {% for car in cars %} {# Loop para 'cars' #}
         <li>
           <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
           {{ car.model }} ({{ car.manufacturer.name }})
