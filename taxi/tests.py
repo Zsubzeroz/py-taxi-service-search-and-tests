@@ -1,6 +1,7 @@
+# taxi/tests.py (Substitua o conteúdo inteiro por este)
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Driver, Car, Manufacturer  # Verifique se os modelos estão corretos
+from .models import Driver, Car, Manufacturer
 
 
 class SearchTests(TestCase):
@@ -8,7 +9,6 @@ class SearchTests(TestCase):
     def setUp(self):
         self.client = Client()
 
-        # Criação de dados de teste
         self.manufacturer1 = Manufacturer.objects.create(name="Toyota")
         self.manufacturer2 = Manufacturer.objects.create(name="honda")
         self.driver1 = Driver.objects.create(username="Alice_123", email="a@a.com")
@@ -22,12 +22,9 @@ class SearchTests(TestCase):
             manufacturer=self.manufacturer2
         )
 
-        # URLs (ASSUMINDO NOME PADRÃO: driver_list, car_list, manufacturer_list)
         self.drivers_url = reverse("taxi:driver_list")
         self.cars_url = reverse("taxi:car_list")
         self.manufacturers_url = reverse("taxi:manufacturer_list")
-
-    # --- Testes de Drivers ---
 
     def test_driver_list_no_search(self):
         response = self.client.get(self.drivers_url)
@@ -44,24 +41,16 @@ class SearchTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context["drivers"]), 1)
 
-    # --- Testes de Carros ---
-
     def test_car_list_search_model(self):
         response = self.client.get(self.cars_url, {"q": "olla"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context["cars"]), 1)
-
-        # --- Testes de Fabricantes ---
 
     def test_manufacturer_list_search_name_case(self):
         response = self.client.get(self.manufacturers_url, {"q": "HONDA"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context["manufacturers"]), 1)
 
-    # --- Teste de presença de formulário ---
-
     def test_search_form_present_on_drivers_page(self):
         response = self.client.get(self.drivers_url)
         self.assertContains(response, '<input type="text" name="q"')
-
-# ... (resto do arquivo)

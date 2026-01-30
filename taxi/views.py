@@ -1,13 +1,14 @@
 # taxi/views.py (Substitua o conteúdo inteiro por este)
 from django.views.generic import ListView
-from .models import Driver, Car, Manufacturer  # E261: Dois espaços aqui
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Driver, Car, Manufacturer
 
 # ... (outras views que você já tem)
 
-class DriverListView(ListView):
+class DriverListView(LoginRequiredMixin, ListView):
     model = Driver
     template_name = "taxi/driver_list.html"
-    context_object_name = "drivers" # Seu nome de contexto atual
+    context_object_name = "drivers"
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -17,10 +18,10 @@ class DriverListView(ListView):
         return queryset
 
 
-class CarListView(ListView):
+class CarListView(LoginRequiredMixin, ListView):
     model = Car
     template_name = "taxi/car_list.html"
-    context_object_name = "cars" # Assumindo 'cars' como contexto para carros
+    context_object_name = "cars"
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -30,10 +31,10 @@ class CarListView(ListView):
         return queryset
 
 
-class ManufacturerListView(ListView):
+class ManufacturerListView(LoginRequiredMixin, ListView):
     model = Manufacturer
     template_name = "taxi/manufacturer_list.html"
-    context_object_name = "manufacturers" # Assumindo 'manufacturers' como contexto para fabricantes
+    context_object_name = "manufacturers"
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -41,5 +42,3 @@ class ManufacturerListView(ListView):
         if search_term:
             queryset = queryset.filter(name__icontains=search_term)
         return queryset
-
-# ... (resto do arquivo)
