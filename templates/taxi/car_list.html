@@ -7,7 +7,6 @@
       Create
     </a>
   </h1>
-  {# --- INÍCIO DA BUSCA --- #}
   <form method="get" action="">
       <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Buscar por Modelo..." name="q" value="{{ request.GET.q }}">
@@ -20,11 +19,10 @@
   {% if request.GET.q %}
       <p>Resultados para: <strong>{{ request.GET.q }}</strong></p>
   {% endif %}
-  {# --- FIM DA BUSCA --- #}
 
-  {% if cars %} {# Verificação de contexto para 'cars' #}
+  {% if cars %}
     <ul>
-      {% for car in cars %} {# Loop para 'cars' #}
+      {% for car in cars %}
         <li>
           <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
           {{ car.model }} ({{ car.manufacturer.name }})
@@ -32,7 +30,6 @@
       {% endfor %}
     </ul>
   {% else %}
-    {# --- MENSAGEM DE RESULTADO VAZIO --- #}
     {% if not request.GET.q %}
         <p>There are no cars in taxi</p>
     {% else %}
@@ -40,6 +37,5 @@
             Nenhum carro encontrado com o termo buscado.
         </div>
     {% endif %}
-    {# --- FIM MENSAGEM DE RESULTADO VAZIO --- #}
   {% endif %}
 {% endblock %}

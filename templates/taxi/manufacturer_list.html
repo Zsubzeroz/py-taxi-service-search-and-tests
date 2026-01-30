@@ -7,8 +7,6 @@
       Create
     </a>
   </h1>
-
-  {# --- INÍCIO DA BUSCA --- #}
   <form method="get" action="">
       <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Buscar por Nome..." name="q" value="{{ request.GET.q }}">
@@ -21,9 +19,8 @@
   {% if request.GET.q %}
       <p>Resultados para: <strong>{{ request.GET.q }}</strong></p>
   {% endif %}
-  {# --- FIM DA BUSCA --- #}
 
-  {% if manufacturer_list %}
+  {% if manufacturers %}
     <table class="table">
       <tr>
         <th>ID</th>
@@ -33,7 +30,7 @@
         <th>Delete</th>
       </tr>
 
-      {% for manufacturer in manufacturer_list %}
+      {% for manufacturer in manufacturers %}
         <tr>
           <td>
               {{ manufacturer.id }}
@@ -60,7 +57,6 @@
     </table>
 
   {% else %}
-    {# --- MENSAGEM DE RESULTADO VAZIO --- #}
     {% if not request.GET.q %}
         <p>There are no manufacturers in the service.</p>
     {% else %}
@@ -68,6 +64,5 @@
             Nenhum fabricante encontrado com o termo buscado.
         </div>
     {% endif %}
-    {# --- FIM MENSAGEM DE RESULTADO VAZIO --- #}
   {% endif %}
 {% endblock %}

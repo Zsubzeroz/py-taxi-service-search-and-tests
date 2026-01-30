@@ -1,4 +1,3 @@
-# taxi/views.py (Substitua o conteúdo inteiro por este)
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Driver, Car, Manufacturer
@@ -42,3 +41,4 @@ class ManufacturerListView(LoginRequiredMixin, ListView):
         if search_term:
             queryset = queryset.filter(name__icontains=search_term)
         return queryset
+

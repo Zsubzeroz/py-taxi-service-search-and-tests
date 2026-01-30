@@ -1,4 +1,3 @@
-# taxi/tests.py (Substitua o conteúdo inteiro por este)
 from django.test import TestCase, Client
 from django.urls import reverse
 from .models import Driver, Car, Manufacturer
@@ -54,3 +53,4 @@ class SearchTests(TestCase):
     def test_search_form_present_on_drivers_page(self):
         response = self.client.get(self.drivers_url)
         self.assertContains(response, '<input type="text" name="q"')
+
