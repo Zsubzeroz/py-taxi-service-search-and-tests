@@ -1,6 +1,6 @@
 # taxi/views.py (Substitua o conteúdo inteiro por este)
 from django.views.generic import ListView
-from .models import Driver, Car, Manufacturer # Importe todos os modelos
+from .models import Driver, Car, Manufacturer  # E261: Dois espaços aqui
 
 # ... (outras views que você já tem)
 

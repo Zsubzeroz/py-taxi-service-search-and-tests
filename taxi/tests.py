@@ -14,10 +14,14 @@ class SearchTests(TestCase):
         self.manufacturer2 = Manufacturer.objects.create(name="honda")
         self.driver1 = Driver.objects.create(username="Alice_123", email="a@a.com")
         self.driver2 = Driver.objects.create(username="Bob_456", email="b@b.com")
-        self.car1 = Car.objects.create(model="Corolla",
-                                       manufacturer=self.manufacturer1)
-        self.car2 = Car.objects.create(model="Civic",
-                                       manufacturer=self.manufacturer2)
+        self.car1 = Car.objects.create(
+            model="Corolla",
+            manufacturer=self.manufacturer1
+        )
+        self.car2 = Car.objects.create(
+            model="Civic",
+            manufacturer=self.manufacturer2
+        )
 
         # URLs (AJUSTE OS NOMES AQUI SE NECESSÁRIO)
         self.drivers_url = reverse("taxi:driver-list")
