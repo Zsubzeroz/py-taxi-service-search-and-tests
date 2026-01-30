@@ -1,4 +1,3 @@
-# taxi/tests.py (Substitua o conteúdo inteiro por este)
 from django.test import TestCase, Client
 from django.urls import reverse
 from .models import Driver, Car, Manufacturer  # Verifique se os modelos estão corretos
@@ -23,10 +22,10 @@ class SearchTests(TestCase):
             manufacturer=self.manufacturer2
         )
 
-        # URLs (AJUSTE OS NOMES AQUI SE NECESSÁRIO)
-        self.drivers_url = reverse("taxi:driver-list")
-        self.cars_url = reverse("taxi:car-list")
-        self.manufacturers_url = reverse("taxi:manufacturer-list")
+        # URLs (ASSUMINDO NOME PADRÃO: driver_list, car_list, manufacturer_list)
+        self.drivers_url = reverse("taxi:driver_list")
+        self.cars_url = reverse("taxi:car_list")
+        self.manufacturers_url = reverse("taxi:manufacturer_list")
 
     # --- Testes de Drivers ---
 
@@ -65,4 +64,4 @@ class SearchTests(TestCase):
         response = self.client.get(self.drivers_url)
         self.assertContains(response, '<input type="text" name="q"')
 
-# ... (resto do arquivo) - Se você tinha outros testes, copie-os após esta classe.
+# ... (resto do arquivo)
