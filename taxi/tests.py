@@ -57,3 +57,5 @@ class SearchTests(TestCase):
     def test_search_form_present_on_drivers_page(self):
         response = self.client.get(self.drivers_url)
         self.assertContains(response, '<input type="text" name="q"')
+
+# ... (resto do arquivo) - Se você tinha outros testes, copie-os após esta classe.
