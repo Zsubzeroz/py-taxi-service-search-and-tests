@@ -1,4 +1,4 @@
-# taxi/views.py (Adapte as importações de seus modelos no topo do arquivo)
+# taxi/views.py (Substitua seu conteúdo inteiro por este)
 from django.views.generic import ListView
 from .models import Driver, Car, Manufacturer # Certifique-se de importar todos os modelos
 
